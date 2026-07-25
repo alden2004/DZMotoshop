@@ -1,2 +1,2 @@
 [phases.setup]
-phpVersion = "8.2"
+nixPkgs = ["php82", "composer"]
