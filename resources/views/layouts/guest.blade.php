@@ -4,12 +4,17 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
+
         <title>{{ config('app.name', 'Laravel') }}</title>
+
+        <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+
+        <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans text-gray-900 antialiased bg-[#0d0d0d]">
+    <body class="font-sans text-gray-100 antialiased bg-[#0d0d0d] min-h-screen flex flex-col">
 
         @php
             /*
@@ -24,7 +29,7 @@
         @endphp
 
         {{-- Navbar --}}
-        <header class="border-b border-[#1f1f1f]">
+        <header class="border-b border-[#1f1f1f] bg-[#0d0d0d]">
             <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
                 {{-- Logo --}}
                 <a href="{{ url('/') }}" class="leading-tight">
@@ -40,7 +45,7 @@
                     <a href="{{ $authTarget }}" class="hover:text-white">Kontak</a>
                 </nav>
 
-                {{-- Right icons --}}
+                {{-- Right icons & actions --}}
                 <div class="flex items-center gap-5 text-gray-200">
 
                     {{-- Keranjang --}}
@@ -60,8 +65,12 @@
             </div>
         </header>
 
-        <div class="min-h-[calc(100vh-73px)] flex flex-col items-center justify-center px-4">
-            {{ $slot }}
-        </div>
+        {{-- Main Content / Form Container --}}
+        <main class="flex-1 flex flex-col items-center justify-center px-4 py-12">
+            <div class="w-full sm:max-w-md px-6 py-8 bg-[#141414] border border-[#222] shadow-xl overflow-hidden sm:rounded-xl">
+                {{ $slot }}
+            </div>
+        </main>
+
     </body>
 </html>
